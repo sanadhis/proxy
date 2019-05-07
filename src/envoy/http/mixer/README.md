@@ -10,7 +10,7 @@ Please make sure to modify both the original one and the copy together if necess
 
 
 ## Build Mixer server
-Clone the main [istio/istio](https://github.com/istio/istio) repository and go inside:
+Clone the main [istio/istio](https://github.com/istio/istio) repository then go inside and build mixer server using makefile:
 
 ```bash
 cd istio/istio
@@ -36,11 +36,11 @@ make mixs
   
   The server will run at port 9091.
 
-* Start backend Echo server.
+* Start backend Echo server in this repository.
 
 ```
-  cd test/backend/echo
-  go run echo.go
+  cd istio/proxy
+  go run test/backend/echo/echo.go
 ```
 
 * Start Envoy proxy, run
