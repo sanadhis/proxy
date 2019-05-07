@@ -10,9 +10,12 @@ Please make sure to modify both the original one and the copy together if necess
 
 
 ## Build Mixer server
+Clone the main [istio/istio](https://github.com/istio/istio) repository and go inside:
 
-* Follow https://github.com/istio/istio/blob/master/mixer/doc/running-local-mixer.md to run a Mixer server locally. 
-Follow https://github.com/istio/istio/wiki/Dev-Guide to build Istio, which includes building Mixer server. 
+```bash
+cd istio/istio
+make mixs
+```
   
 ## Build Envoy proxy
 
@@ -24,16 +27,14 @@ Follow https://github.com/istio/istio/wiki/Dev-Guide to build Istio, which inclu
 
 ## How to run it
 
-* Start mixer server. In mixer folder run:
+* Start local mixer server. Run the following:
 
 ```
-  bazel-bin/cmd/server/mixs server \
-    --configStoreURL=fs://$(pwd)/testdata/configroot \
-    --alsologtostderr
+  $GOPATH/out/<os>_<arch>/release/mixs server \
+    --configStoreURL=fs://$GOPATH/src/istio.io/istio/mixer/testdata/config 
 ```
   
   The server will run at port 9091.
-  In order to run Mixer locally, you also need to edit `testdata/configroot/scopes/global/subjects/global/rules.yml` as described in its comments.
 
 * Start backend Echo server.
 
